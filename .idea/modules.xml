@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Local Sites/emerge-digital/app/public/wp-content/plugins/emerge-blocks/.idea/emerge-blocks.iml" filepath="$USER_HOME$/Local Sites/emerge-digital/app/public/wp-content/plugins/emerge-blocks/.idea/emerge-blocks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/emerge-components.iml" filepath="$PROJECT_DIR$/.idea/emerge-components.iml" />
+    </modules>
+  </component>
+</project>
