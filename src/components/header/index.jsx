@@ -5,7 +5,7 @@ import Container from '../shared/container';
 export default function Navbar() {
   return (
     <Container>
-      <nav className="navbar  mb-[120px] flex justify-between items-center bg-white text-black py-[2.31rem]">
+      <nav className="navbar flex justify-between items-center bg-white text-black py-[2.31rem]">
         <div className="flex items-center">
           <img src={Logo} alt="Your Logo" />
           <ul className="hidden lg:flex space-x-8 ml-[2.25rem]">
