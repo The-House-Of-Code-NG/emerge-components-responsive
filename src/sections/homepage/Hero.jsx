@@ -1,7 +1,8 @@
 import SwiperCore from 'swiper';
 import { A11y, Navigation, Pagination} from 'swiper/modules';
 import { SwiperSlide, Swiper } from 'swiper/react';
-
+import {useAnimate, useInView, useScroll, useTransform, motion} from "framer-motion";
+import {useEffect, useRef} from "react";
 
 import Image1 from '../../assets/image 2.svg'
 import Image2 from '../../assets/image 3.svg'
@@ -55,14 +56,27 @@ const sliderOptions = {
 };
 
 export const HomepageHero = (props) => {
+    const [scope] = useAnimate()
+    const target = useRef()
+    const {scrollYProgress} = useScroll({
+        target,
+        offset: ["end end", "end start"]
+
+    })
+
+
+
+    const opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.9], [1, 0.3, 0])
+    const scale = useTransform(scrollYProgress, [0.5, 1], [1, 0.8]);
+
     return (
-        <Container>
-            <section className='flex flex-col md:flex-row md:items-start md:justify-between w-full'>
+        <motion.section ref={target} style={{opacity}} className="w-full px-[1.25rem] lg:px-[8rem] overflow-hidden">
+            <motion.div style={{scale}} className='flex flex-col md:flex-row md:items-center md:justify-between w-full'>
                 <div className="w-full md:w-1/2">
-                    <span className='text-center text-sm md:text-base font-Inter text-[#100650] font-medium h-[36px] bg-[#4A00FF0F]/5 rounded-[6px] py-2'>
+                    <span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-opacity-5 bg-[#4A00FF0F] px-2.5 rounded-[6px] py-2'>
                    {props.tagText}
                 </span>
-                    <div className='flex flex-col mt-4'>
+                    <div ref={scope} className='flex flex-col mt-4'>
                         <h1 className="font-black font-Satoshi text-[3.5rem] md:text-[56px] leading-[63px]">
                             {props.heroHeading}
                         </h1>
@@ -82,10 +96,10 @@ export const HomepageHero = (props) => {
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 mt-[3.1rem] md:mt-0 flex flex-row md:justify-center">
-                    <img className="self-end" src={props.imageSrc} alt={props?.imageAlt ?? 'Emerge digital'}  />
+                    <img className="w-[500px] h-[480px] self-end" src={props.imageSrc} alt={props?.imageAlt ?? 'Emerge digital'}  />
                 </div>
-            </section>
-        </Container>
+            </motion.div>
+        </motion.section>
     )
 }
 
@@ -150,36 +164,241 @@ export const Clients = () => {
 };
 
 export const WhatWeDo = () => {
+    const targetRef = useRef();
+    const extendedRef = useRef();
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ["start end", "end end"],
+    });
+    const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
+        target: extendedRef,
+        offset: ["start end", "end end"],
+    });
+
+    const scale = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.5, 0.75, 0.85, 1],
+        [1, 2, 4.5, 1]
+    );
+
+    const x1 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.70, 0.75, 1],
+        [ "0", "0", "-800vw", "0"]
+    );
+    const x2 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.80,  0.85, 1],
+        ["0", "0", "600vw", "0"]
+        // Adjust values for desired speeds
+    );
+    const x3 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.90, 0.95, 1],
+        ["0", "0", "400vw", "0"]
+    );
+
+    const y1 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.70, 0.75, 1],
+        [ "0", "0", "-40vh", "0"]
+    );
+    const y2 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.80,  0.85, 1],
+        ["0", "0", "-60vh", "0"]
+        // Adjust values for desired speeds
+    );
+    const y3 = useTransform(
+        scrollYProgressIncludingOverlap,
+        [0.1, 0.90, 0.95, 1],
+        ["0", "0", "-80vh", "0"]
+    );
+
+    const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0.3]);
+
     return (
-        <div className="w-full px-[1.25rem] lg:px-[8rem] overflow-hidden bg-gradient-to-b from-transparent to-purple-100">
-            <section className="mt-24 pb-24">
-                <div className="flex flex-col items-center">
-                    <div>
+        <section ref={targetRef} className="w-full h-[150vh] px-[1.25rem] lg:px-[8rem] overflow-hidden bg-gradient-to-b from-transparent to-purple-100">
+            <div ref={extendedRef} className="mt-24 h-[200vh] w-full">
+                <div className="sticky top-0">
+                    <motion.div style={{opacity}} className="flex flex-col items-center">
+                        <div>
                         <span className='h-[36px] text-center font-Inter text-[#100650] font-medium bg-opacity-5 bg-[#4A00FF0F] rounded-[6px] px-[0.62rem] py-2'>
                      OUR STRENGTHS
                     </span>
-                    </div>
-                    <h1 className="text-center mt-4 font-black font-Satoshi text-[42px]">What Makes Us Different</h1>
+                        </div>
+                        <h1 className="text-center mt-4 font-black font-Satoshi text-[42px]">What Makes Us Different</h1>
+                    </motion.div>
+                    <motion.div style={{opacity, scale}} className="mt-[5.19rem] md:mt-14 flex flex-col md:flex-row space-y-[1.81rem] md:space-y-0 md:space-x-16 md:items-center md:justify-between">
+                        <motion.div style={{ x:x1, opacity, y:y1}}  className="origin-top flex flex-col w-full  md:w-1/3">
+                            <img className="w-[310px] h-[190px]" src={WhatWeDo1} />
+                            <h3 className="font-black text-2xl font-Satoshi text-center my-6">Turn curiosity into sales</h3>
+                            <p className="text-lg text-center font-Inter font-normal">Craft a unique marketing campaign that ‘gels’ with your ideal customer and turns their curiosity into bona-fide sales.</p>
+                        </motion.div>
+                        <motion.div style={{  x:x2, y:y2, opacity}}  className="origin-top flex flex-col w-full  md:w-1/3">
+                            <img className="w-[310px] h-[190px]" src={WhatWeDo2} />
+                            <h3 className="font-black text-2xl font-Satoshi text-center my-6">Driven by data</h3>
+                            <p className="text-lg text-center font-Inter font-normal">
+                                Takeout guesswork. Make informed choices about your digital marketing strategy with privacy-centric first-party data solutions.
+                            </p>
+                        </motion.div>
+                        <motion.div style={{ x:x3,opacity, y:y3 }}  className="origin-top flex flex-col w-full  md:w-1/3">
+                            <img className="w-[310px] h-[190px]" src={WhatWeDo3} />
+                            <h3 className="font-black text-2xl font-Satoshi text-center my-6">Trusted support network</h3>
+                            <p className="text-lg text-center font-Inter font-normal">
+                                You are guided every step of the way. Our focus on maintaining a friendly rapport and keeping things transparent means you can relax knowing you are in good hands.
+                            </p>
+                        </motion.div>
+                    </motion.div>
                 </div>
-                <div className=" mt-[5.19rem] md:mt-14 flex flex-col md:flex-row space-y-[1.81rem] md:space-y-0 md:space-x-16 md:items-center md:justify-between">
-                    <div className="flex flex-col w-full  md:w-1/3">
-                        <img className="w-[310px] h-[190px]" src={WhatWeDo1} />
-                        <h3 className="font-black text-2xl font-Satoshi text-center my-6">Turn curiosity into sales</h3>
-                        <p className="text-lg text-center font-Inter font-normal">Craft a unique marketing campaign that ‘gels’ with your ideal customer and turns their curiosity into bona-fide sales.</p>
-                    </div>
-                    <div className="flex flex-col w-full  md:w-1/3">
-                        <img className="w-[310px] h-[190px]" src={WhatWeDo2} />
-                        <h3 className="font-black text-2xl font-Satoshi text-center my-6">Driven by data</h3>
-                        <p className="text-lg text-center font-Inter font-normal">
-                            Takeout guesswork. Make informed choices about your digital marketing strategy with privacy-centric first-party data solutions.
-                        </p>
-                    </div>
-                    <div className="flex flex-col w-full  md:w-1/3">
-                        <img className="w-[310px] h-[190px]" src={WhatWeDo3} />
-                        <h3 className="font-black text-2xl font-Satoshi text-center my-6">Trusted support network</h3>
-                        <p className="text-lg text-center font-Inter font-normal">
-                            You are guided every step of the way. Our focus on maintaining a friendly rapport and keeping things transparent means you can relax knowing you are in good hands.
-                        </p>
+            </div>
+        </section>
+    )
+}
+
+
+export const CallToActionSection = () => {
+    const [scope, animate] = useAnimate()
+    const isInView = useInView(scope)
+    const target = useRef()
+    const {scrollYProgress} = useScroll({
+        target,
+        offset: ["end end", "end start"]
+
+    })
+
+
+    useEffect(() => {
+        if(isInView) {
+            void handleAnimation()
+        }
+    }, [isInView])
+
+    const handleAnimation = async  () => {
+        await animate('span', {x: [-1000, 0], opacity: [0, 1]}, {ease: "easeIn", duration: 2.6})
+    }
+    const opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.9], [1, 0.3, 0])
+    const scale = useTransform(scrollYProgress, [0.5, 1], [1, 0.8]);
+
+    return (
+        <motion.section ref={target} style={{opacity, scale}} className="bg-[#100650] -px-[8rem]">
+            <motion.div ref={scope} className="flex px-[2.06rem] md:px-32 pt-[3.5rem]  pb-[20rem]  md:py-40 flex-col md:flex-row bg-section-4-mobile md:bg-section-4 bg-origin-border bg-no-repeat bg-right-bottom md:bg-right-top" >
+                <div className="w-full md:w-2/3">
+                    <motion.span className='text-sm md:text-base text-center font-Inter text-[#100650] text-white font-medium uppercase h-[36px] bg-white/10 px-2.5 rounded-[6px] py-2'>
+                        PERSONALISED. RELIABLE. EFFECTIVE
+                    </motion.span>
+                    <motion.h3 className="leading-[3.9rem] mt-[1.19rem] font-black font-Satoshi text-[3.2rem] md:text-[3.5rem] text-white">
+                        Enjoy Full-Service Digital Marketing Expertise
+                    </motion.h3>
+                    <motion.p id="CallToActionSectionP" className="font-Inter mt-7 mb-11 text-white  leading-[1.6rem] text-lg font-normal">
+                        Digital media strives to transparently reach people—not personas—through tech.
+                        <br />
+                        We are willing to decipher the crux of your organization and understand all the moving pieces in combination of hard-working communication, extensive design, and technology smarts to unlock your growth potential.
+                        <br />
+                        We enhance our partner’s delivery of customer experience to their customers by delivering personalized messaging activating the right message at the right time to the right touchpoint.  <br />
+                    </motion.p>
+                    <a className="mt-5 text-white text-lg text-center font-Inter font-semibold bg-[#8959FF] inline-flex rounded-[8px] px-3.5 py-2">
+                        Book a FREE Strategy Session
+                    </a>
+                </div>
+            </motion.div>
+        </motion.section>
+    )
+}
+
+
+export const OurServices = () => {
+    return (
+        <div className="w-full pl-[1.25rem] lg:pl-[8rem] overflow-hidden">
+            <section className="mt-24">
+                <span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#4A00FF0F]/5 px-2.5 rounded-[6px] py-2'>
+                        Our services
+                    </span>
+                <h3 className="mt-4 font-black font-Satoshi pr-[0.5rem] text-[2.875rem] md:text-5xl w-full  md:w-1/2 leading-[3.3rem] ">
+                    Powerful Digital Marketing Solutions
+                </h3>
+                <div className="mt-11 mb-52">
+                    <Swiper {...sliderOptions} className="w-full flex">
+                        <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
+                            <div className="h-[33rem] md:h-[29rem]">
+
+                                <img className="w-[50px] h-[50px]" src={ServiceIcon1} />
+                                <h3 className="font-black text-[#0E1218] w-2/3 text-lg font-Satoshi leading-[30px]">
+                                    Digital Analytics & Measurement
+                                </h3>
+                                <p className="font-Inter mt-4 font-normal text-lg leading-[30px]">
+                                    No matter how well your SEO, social media, or paid media ad campaigns are planned, consistent growth is only possible if you receive accurate reports on every metric related to your strategies.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className="pt-8 px-6 flex bg-[#100650] flex-col rounded-[20px]">
+                            <div className="h-[33rem] md:h-[29rem]">
+                                <div>
+                                    <img className="w-[50px] h-[50px]" src={ServiceIcon2} />
+                                </div>
+                                <h3 className="font-black text-white mt-7 w-2/3 text-lg font-Satoshi leading-[30px]">
+                                    Paid Media Services
+                                </h3>
+                                <p className="font-Inter mt-4 font-normal text-white text-lg leading-[30px]">
+                                    A paid placement in an external marketing campaign is referred to as a paid media. PPC marketing, display ads, and branded content are all part of it. For online businesses, this is a crucial element of revenue growth and brand awareness.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
+                            <div className="h-[33rem] md:h-[29rem]">
+                                <img className="w-[50px] h-[50px]" src={ServiceIcon3} />
+                                <h3 className="font-black w-2/3  mt-7 text-[#0E1218] text-lg font-Satoshi leading-[30px]">
+                                    Search Engine Optimization (SEO)
+                                </h3>
+                                <p className="font-Inter mt-4 font-normal text-lg leading-[30px]">
+                                    Our mission is to assist local businesses as well as businesses targeting the Dubai market increasing their online visibility, ranking, and traffic through search engine optimization.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
+                            <div className="h-[33rem] md:h-[29rem]">
+                                <img className="w-[50px] h-[50px]" src={ServiceIcon4} />
+                                <h3 className="font-black w-2/3 mt-7 text-[#0E1218] text-lg font-Satoshi leading-[30px]">
+                                    Digital Analytics & Measurement
+                                </h3>
+                                <p className="font-Inter mt-4 font-normal text-lg leading-[30px]">
+                                    No matter how well your SEO, social media, or paid media ad campaigns are planned, consistent growth is only possible if you receive accurate reports on every metric related to your strategies.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                    <div className="flex flex-row items-center w-full justify-end md:px-16">
+                        <div className="flex mt-12 flex-row space-x-5 items-center">
+                            <button className="service-slider-prev">
+                                <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="23" cy="23" r="22.6034" transform="matrix(-1 0 0 1 46 0)" stroke="black" stroke-width="0.793103"/>
+                                    <g clip-path="url(#clip0_4301_4478)">
+                                        <path d="M31.7266 23H14.2783" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M21.4141 30.1406L14.2761 23.0027L21.4141 15.8648" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4301_4478">
+                                            <rect width="25.3793" height="25.3793" fill="white" transform="matrix(0 -1 -1 0 35.6914 35.6914)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button className="service-slider-next">
+                                <svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="23.5508" cy="23" r="22.6034" stroke="black" stroke-width="0.793103"/>
+                                    <g clip-path="url(#clip0_4301_4484)">
+                                        <path d="M14.8242 23H32.2725" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M25.1328 30.1406L32.2707 23.0027L25.1328 15.8648" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4301_4484">
+                                            <rect width="25.3793" height="25.3793" fill="white" transform="matrix(0 -1 1 0 10.8594 35.6914)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -188,145 +407,39 @@ export const WhatWeDo = () => {
 }
 
 
-export const CallToActionSection = () => {
-    return (
-        <section className="bg-[#100650] -px-[8rem]">
-            <div className="flex px-[2.06rem] md:px-32 pt-[3.5rem]  pb-[20rem]  md:py-40 flex-col md:flex-row bg-section-4-mobile md:bg-section-4 bg-origin-border bg-no-repeat bg-right-bottom md:bg-right-top" >
-                <div className="w-full md:w-2/3">
-                    <span className='text-sm md:text-base text-center font-Inter text-[#100650] text-white font-medium uppercase h-[36px] bg-white/10 px-2.5 rounded-[6px] py-2'>
-                        PERSONALISED. RELIABLE. EFFECTIVE
-                    </span>
-                    <h3 className="leading-[3.9rem] mt-[1.19rem] font-black font-Satoshi text-[3.2rem] md:text-[3.5rem] text-white">
-                        Enjoy Full-Service Digital Marketing Expertise
-                    </h3>
-                    <p className="font-Inter mt-7 mb-11 text-white  leading-[1.6rem] text-lg font-normal">
-                        Digital media strives to transparently reach people—not personas—through tech.
-                        <br />
-                        We are willing to decipher the crux of your organization and understand all the moving pieces in combination of hard-working communication, extensive design, and technology smarts to unlock your growth potential.
-                        <br />
-                        We enhance our partner’s delivery of customer experience to their customers by delivering personalized messaging activating the right message at the right time to the right touchpoint.  <br />
-                    </p>
-                    <a className="mt-5 text-white text-lg text-center font-Inter font-semibold bg-[#8959FF] inline-flex rounded-[8px] px-3.5 py-2">
-                        Book a FREE Strategy Session
-                    </a>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-
-export const OurServices = () => {
-        return (
-            <div className="w-full pl-[1.25rem] lg:pl-[8rem] overflow-hidden">
-                <section className="mt-24">
-                <span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#4A00FF0F]/5 px-2.5 rounded-[6px] py-2'>
-                        Our services
-                    </span>
-                    <h3 className="mt-4 font-black font-Satoshi pr-[0.5rem] text-[2.875rem] md:text-5xl w-full  md:w-1/2 leading-[3.3rem] ">
-                        Powerful Digital Marketing Solutions
-                    </h3>
-                    <div className="mt-11 md:mb-52 mb-[5.56rem]">
-                        <Swiper {...sliderOptions} className="w-full flex">
-                            <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
-                                <div className="h-[33rem] md:h-[29rem]">
-
-                                    <img className="w-[50px] h-[50px]" src={ServiceIcon1} />
-                                    <h3 className="font-black text-[#0E1218] mt-[2.43rem] mb-[0.93rem] w-2/3 text-2xl font-Satoshi leading-[30px]">
-                                        Digital Analytics & Measurement
-                                    </h3>
-                                    <p className="font-Inter font-normal text-lg leading-[30px]">
-                                        No matter how well your SEO, social media, or paid media ad campaigns are planned, consistent growth is only possible if you receive accurate reports on every metric related to your strategies.
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide className="pt-8 px-6 flex bg-[#100650] flex-col rounded-[20px]">
-                                <div className="h-[33rem] md:h-[29rem]">
-                                    <div>
-                                        <img className="w-[50px] h-[50px]" src={ServiceIcon2} />
-                                    </div>
-                                    <h3 className="font-black text-white mt-[2.43rem] mb-[0.93rem] w-2/3 text-2xl font-Satoshi leading-[30px]">
-                                        Paid Media Services
-                                    </h3>
-                                    <p className="font-Inter font-normal text-white text-lg leading-[30px]">
-                                        A paid placement in an external marketing campaign is referred to as a paid media. PPC marketing, display ads, and branded content are all part of it. For online businesses, this is a crucial element of revenue growth and brand awareness.
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
-                                <div className="h-[33rem] md:h-[29rem]">
-                                    <img className="w-[50px] h-[50px]" src={ServiceIcon3} />
-                                    <h3 className="font-black w-2/3  mt-[2.43rem] mb-[0.93rem] text-[#0E1218] text-2xl font-Satoshi leading-[30px]">
-                                        Search Engine Optimization (SEO)
-                                    </h3>
-                                    <p className="font-Inter font-normal text-lg leading-[30px]">
-                                        Our mission is to assist local businesses as well as businesses targeting the Dubai market increasing their online visibility, ranking, and traffic through search engine optimization.
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
-                                <div className="h-[33rem] md:h-[29rem]">
-                                    <img className="w-[50px] h-[50px]" src={ServiceIcon4} />
-                                    <h3 className="font-black w-2/3 mt-[2.43rem] mb-[0.93rem] text-[#0E1218] text-2xl font-Satoshi leading-[30px]">
-                                        Digital Analytics & Measurement
-                                    </h3>
-                                    <p className="font-Inter font-normal text-lg leading-[30px]">
-                                        No matter how well your SEO, social media, or paid media ad campaigns are planned, consistent growth is only possible if you receive accurate reports on every metric related to your strategies.
-                                    </p>
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
-                        <div className="flex flex-row items-center w-full justify-end md:px-16">
-                            <div className="flex mt-12 flex-row space-x-5 items-center">
-                                <button className="service-slider-prev">
-                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="23" cy="23" r="22.6034" transform="matrix(-1 0 0 1 46 0)" stroke="black" stroke-width="0.793103"/>
-                                        <g clip-path="url(#clip0_4301_4478)">
-                                            <path d="M31.7266 23H14.2783" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M21.4141 30.1406L14.2761 23.0027L21.4141 15.8648" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_4301_4478">
-                                                <rect width="25.3793" height="25.3793" fill="white" transform="matrix(0 -1 -1 0 35.6914 35.6914)"/>
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                                <button className="service-slider-next">
-                                    <svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="23.5508" cy="23" r="22.6034" stroke="black" stroke-width="0.793103"/>
-                                        <g clip-path="url(#clip0_4301_4484)">
-                                            <path d="M14.8242 23H32.2725" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M25.1328 30.1406L32.2707 23.0027L25.1328 15.8648" stroke="black" stroke-width="1.58621" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_4301_4484">
-                                                <rect width="25.3793" height="25.3793" fill="white" transform="matrix(0 -1 1 0 10.8594 35.6914)"/>
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        )
-}
-
-
 export const Partnership = () => {
+    const [scope, animate] = useAnimate()
+    const isInView = useInView(scope)
+    const target = useRef()
+    const {scrollYProgress} = useScroll({
+        target,
+        offset: ["end end", "end start"]
+
+    })
+
+
+    useEffect(() => {
+        if(isInView) {
+            void handleAnimation()
+        }
+    }, [isInView])
+
+    const handleAnimation = async  () => {
+        await animate('span', {opacity: [0, 1], x: [-1000, 0]}, {ease: "easeIn", duration: 1.6})
+    }
+    const opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.9], [1, 0.3, 0])
+    const scale = useTransform(scrollYProgress, [0.5, 1], [1, 0.8]);
+
     return (
-       <Container>
-           <section className="flex flex-col md:flex-row items-start">
-               <div className="mb-[3.44rem] md:mb-0 flex-1">
-                <span className='inline-flex text-sm md:text-base text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#4A00FF0F]/5 px-2.5 rounded-[6px] py-2'>
+       <motion.div style={{opacity, scale}} className="w-full px-[1.25rem] lg:px-[8rem] overflow-hidden" ref={target}>
+           <motion.section className="flex flex-col md:flex-row items-start">
+               <motion.div ref={scope} className="mb-[3.44rem] md:mb-0 flex-1">
+                <motion.span className='inline-flex text-sm md:text-base text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#4A00FF0F]/5 px-2.5 rounded-[6px] py-2'>
                         UNDERSTAND YOUR CUSTOMERS BETTER
-                    </span>
-                   <h3 className="font-black font-Satoshi leading-[3.24rem] md:leading-[3.94rem] text-[2.875rem] md:text-[3.125rem] mt-[1.56rem] md:mt-8">
+                    </motion.span>
+                   <motion.h3 className="font-black font-Satoshi leading-[3.24rem] md:leading-[3.94rem] text-[2.875rem] md:text-[3.125rem] mt-[1.56rem] md:mt-8">
                        Work with us to IGNITE the power of your first-party Data
-                   </h3>
+                   </motion.h3>
                    <div className="flex flex-col mt-5">
                        <p className="text-black font-Inter text-lg leading-[35px]">
                            BCG identified six technological and organizational enablers that empower brands to pull insights from their own data.
@@ -335,7 +448,7 @@ export const Partnership = () => {
                            Emerge Digital will augment your team to fulfil the enablers and roles necessary for your Digital Transformation projects
                        </p>
                    </div>
-               </div>
+               </motion.div>
                <div className="flex-1">
                    <div className="block md:hidden">
                     <PyramidMobile className="w-[20.79125rem] h-[18.6rem] block md:hidden" />
@@ -344,8 +457,8 @@ export const Partnership = () => {
                        <img src={Pyramid} alt="" />
                    </div>
                </div>
-           </section>
-       </Container>
+           </motion.section>
+       </motion.div>
     )
 }
 
@@ -434,20 +547,43 @@ export const SignupForms = () => {
 
 
 export const TalkToUs = () => {
+    const target = useRef()
+    const {scrollYProgress} = useScroll({
+        target,
+        offset: ["end end", "end start"]
+
+    })
+    const opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.9], [1, 0.3, 0])
+    const scale = useTransform(scrollYProgress, [0.5, 1], [1, 0.8]);
+
+    const [scope, animate] = useAnimate()
+    const isInView = useInView(scope)
+
+
+    useEffect(() => {
+        if(isInView) {
+            void handleAnimation()
+        }
+    }, [isInView])
+
+    const handleAnimation = async  () => {
+        await animate('span', {x: [-1000, 0], opacity: [0, 1]}, {ease: "easeIn", duration: 2.6})
+        await animate('img', {opacity: [0, 0.5, 0.7, 1]}, {ease: "easeIn", duration: 1.6})
+    }
     return (
-        <section className="bg-talk-cover pt-20 bg-[#E6F7F3] my-24">
-            <div className="flex flex-col items-center">
-                <span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#B5E0D6]/40 px-2.5 rounded-[6px] py-2'>
+        <motion.section ref={target} style={{opacity, scale}} className="bg-talk-cover pt-20 bg-[#E6F7F3] my-24">
+            <motion.div ref={scope} className="flex flex-col items-center">
+                <motion.span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-[#B5E0D6]/40 px-2.5 rounded-[6px] py-2'>
                         Talk to us
-                    </span>
+                    </motion.span>
                 <h3 className="mt-4 font-black leading-[3.5rem] font-Satoshi text-center md:text-left text-[42px]">
                     Talk With Our Digital Strategists
                 </h3>
                 <div className="mt-7">
-                    <img src={require('../../assets/calender.png')} />
+                    <motion.img src={require('../../assets/calender.png')} />
                 </div>
-            </div>
-        </section>
+            </motion.div>
+        </motion.section>
     )
 }
 
@@ -462,7 +598,7 @@ export const ReviewsSection = () => {
                 </h1>
             </div>
             <div className="mt-[2.94rem] ">
-                <Swiper {...sliderOptions} className="w-full flex md:flex-row flex-col">
+                <Swiper {...sliderOptions} className="w-full flex flex-col md:flex-row justify-center">
                     <SwiperSlide className="bg-white rounded-[0.75rem] p-[2rem]">
                         <div className="">
                             <svg width="105" height="21" viewBox="0 0 105 21" fill="none" xmlns="http://www.w3.org/2000/svg">
