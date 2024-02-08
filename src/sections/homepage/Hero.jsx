@@ -71,11 +71,11 @@ export const HomepageHero = (props) => {
 
     return (
         <motion.section ref={target} style={{opacity}} className="w-full px-[1.25rem] lg:px-[8rem] overflow-hidden">
-            <motion.div style={{scale}} className='flex flex-col md:flex-row md:items-center md:justify-between w-full'>
+            <motion.div style={{scale}} className='flex flex-col md:flex-row md:items-center md:justify-between w-full pt-5'>
                 <div className="w-full md:w-1/2">
-                    <span className='text-center font-Inter text-[#100650] font-medium uppercase h-[36px] bg-opacity-5 bg-[#4A00FF0F] px-2.5 rounded-[6px] py-2'>
+                    <div className='text-left font-Inter text-[#100650] font-medium uppercase min-h-[36px] bg-opacity-5 bg-[#4A00FF0F] px-2.5 rounded-[6px] py-2 w-fit'>
                    {props.tagText}
-                </span>
+                </div>
                     <div ref={scope} className='flex flex-col mt-4'>
                         <h1 className="font-black font-Satoshi text-[3.5rem] md:text-[56px] leading-[63px]">
                             {props.heroHeading}
@@ -231,19 +231,19 @@ export const WhatWeDo = () => {
                     </motion.div>
                     <motion.div style={{opacity, scale}} className="mt-[5.19rem] md:mt-14 flex flex-col md:flex-row space-y-[1.81rem] md:space-y-0 md:space-x-16 md:items-center md:justify-between">
                         <motion.div style={{ x:x1, opacity, y:y1}}  className="origin-top flex flex-col w-full  md:w-1/3">
-                            <img className="w-[310px] h-[190px]" src={WhatWeDo1} />
+                            <img className="w-full md:w-[310px] h-[190px]" src={WhatWeDo1} />
                             <h3 className="font-black text-2xl font-Satoshi text-center my-6">Turn curiosity into sales</h3>
                             <p className="text-lg text-center font-Inter font-normal">Craft a unique marketing campaign that ‘gels’ with your ideal customer and turns their curiosity into bona-fide sales.</p>
                         </motion.div>
                         <motion.div style={{  x:x2, y:y2, opacity}}  className="origin-top flex flex-col w-full  md:w-1/3">
-                            <img className="w-[310px] h-[190px]" src={WhatWeDo2} />
+                            <img className="w-full md:w-[310px] h-[190px]" src={WhatWeDo2} />
                             <h3 className="font-black text-2xl font-Satoshi text-center my-6">Driven by data</h3>
                             <p className="text-lg text-center font-Inter font-normal">
                                 Takeout guesswork. Make informed choices about your digital marketing strategy with privacy-centric first-party data solutions.
                             </p>
                         </motion.div>
                         <motion.div style={{ x:x3,opacity, y:y3 }}  className="origin-top flex flex-col w-full  md:w-1/3">
-                            <img className="w-[310px] h-[190px]" src={WhatWeDo3} />
+                            <img className="w-full md:w-[310px] h-[190px]" src={WhatWeDo3} />
                             <h3 className="font-black text-2xl font-Satoshi text-center my-6">Trusted support network</h3>
                             <p className="text-lg text-center font-Inter font-normal">
                                 You are guided every step of the way. Our focus on maintaining a friendly rapport and keeping things transparent means you can relax knowing you are in good hands.
@@ -317,7 +317,7 @@ export const OurServices = () => {
                 <h3 className="mt-4 font-black font-Satoshi pr-[0.5rem] text-[2.875rem] md:text-5xl w-full  md:w-1/2 leading-[3.3rem] ">
                     Powerful Digital Marketing Solutions
                 </h3>
-                <div className="mt-11 mb-52">
+                <div className="mt-11 mb-[5.56rem]">
                     <Swiper {...sliderOptions} className="w-full flex">
                         <SwiperSlide className="pt-8 px-6 flex bg-[#F7F5FC] flex-col rounded-[20px]">
                             <div className="h-[33rem] md:h-[29rem]">
@@ -368,7 +368,7 @@ export const OurServices = () => {
                         </SwiperSlide>
                     </Swiper>
                     <div className="flex flex-row items-center w-full justify-end md:px-16">
-                        <div className="flex mt-12 flex-row space-x-5 items-center">
+                        <div className="flex mt-12 flex-row space-x-5 mr-[5px] items-center">
                             <button className="service-slider-prev">
                                 <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="23" cy="23" r="22.6034" transform="matrix(-1 0 0 1 46 0)" stroke="black" stroke-width="0.793103"/>
@@ -527,7 +527,7 @@ export const SignupForms = () => {
                            Subscribe to Stay Up to Date
                        </h1>
                        <p className="font-Inter font-normal text-lg mt-3.5 text-white">Grow Your Business with our insights to the Digital Landscape</p>
-                       <div className="flex flex-col mt-5 w-[300px]">
+                       <div className="flex flex-col mt-5 md:w-[300px] w-full">
                            <input placeholder="your full name" className=" px-2 text-white bg-[#2D2466] border-[1px] border-white/20 h-[50px] py-2 rounded-[9px]" />
                            <input placeholder="your email address" className="px-2 bg-[#2D2466]  border-[1px] border-white/20 mt-3.5 h-[50px] py-2 rounded-[9px]" />
                            <button className="mt-3.5 flex flex-row justify-center text-white text-lg text-center font-Inter font-semibold bg-[#8959FF] inline-flex rounded-[8px] px-3.5 py-2">
@@ -803,42 +803,42 @@ export const DreamTeam = () => {
                    <h1 className="font-black text-[3.125rem] font-Satoshi text-center">Our dream team</h1>
                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[2.69rem] gap-y-[1.87rem] mt-[4.6rem]">
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
                            </div>
                        </div>
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
                            </div>
                        </div>
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
                            </div>
                        </div>
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
                            </div>
                        </div>
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
                            </div>
                        </div>
                        <div>
-                           <img src={require('../../assets/team-1.png')} />
+                           <img src={require('../../assets/team-1.png')} className='w-full md:w-auto' />
                            <div>
                                <h3 className="font-Inter font-medium text-[1.625rem]">Carl Jameson</h3>
                                <p className="font-Inter font-medium text-[1.125rem]">CEO</p>
