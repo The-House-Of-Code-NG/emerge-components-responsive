@@ -13,6 +13,7 @@ import './assets/styles/homepage/index.css'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Blog from './pages/blog';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/service",
     element: <Service />,
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
   },
 ]);
 
