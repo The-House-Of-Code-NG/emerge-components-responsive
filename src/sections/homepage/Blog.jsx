@@ -83,7 +83,7 @@ export function BlogFeatured() {
                         <h4 className="text-[#101828]">Building your API stack</h4>
                         <ArrowIcon />
                     </div>
-                    <p className='text-[#2D2D2D] text-2xl'>The rise of RESTful APIs has been met by a rise in tools for creating, testing, and manag...</p>
+                    <p className='text-[#2D2D2D] te xt-2xl'>The rise of RESTful APIs has been met by a rise in tools for creating, testing, and manag...</p>
                     <div className="mt-6">
                         <div className="flex gap-x-2">
                             <Tag>Softwere</Tag>
