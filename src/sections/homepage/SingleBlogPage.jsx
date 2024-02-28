@@ -59,7 +59,7 @@ function generateTagColors() {
       <Container>
         <img src={BlogImg} alt="blog" className='mt-16' />
         <div className="md:w-[45rem] m-auto">
-        <h2 className="text-4xl my-6 text-[#101828]">Introduction</h2>
+        <h2 className="md:text-4xl text-2xl my-6 text-[#101828]">Introduction</h2>
         <p className="text-[#1C1C1C] text-lg leading-6">
         Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.
         <br className='mb-6' />
@@ -86,13 +86,13 @@ function generateTagColors() {
                 <div className="mb-6" />
                 Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.
             </p>
-            <h4 className='text-2xl mb-4 mt-8'>Softwere Tools</h4>
+            <h4 className='md:text-2xl text-xl mb-4 mt-8'>Softwere Tools</h4>
             <p className='text-[#1C1C1C] text-lg leading-6'>
                 Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.
                 <div className="mb-6" />
                 Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. 
             </p>
-            <h4 className='text-2xl mb-4 mt-8'>Other Recources</h4>
+            <h4 className='md:text-2xl text-xl mb-4 mt-8'>Other Recources</h4>
             <p className='text-[#1C1C1C] text-lg leading-6'>
             Sagittis et eu at elementum, quis in. Proin praesent volutpat egestas sociis sit lorem nunc nunc sit. Eget diam curabitur mi ac. Auctor rutrum lacus malesuada massa ornare et. Vulputate consectetur ac ultrices at diam dui eget fringilla tincidunt. Arcu sit dignissim massa erat cursus vulputate gravida id. Sed quis auctor vulputate hac elementum gravida cursus dis.
             <div className="mb-6" />
@@ -108,7 +108,7 @@ function generateTagColors() {
                 Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. 
             </p>
             <div className="bg-[#F9FAFB] p-8 rounded-2xl my-12">
-            <h2 className="text-4xl my-6 text-[#101828]">Conclusion</h2>
+            <h2 className="md:text-4xl text-2xl my-6 text-[#101828]">Conclusion</h2>
                 <p className='text-[#1C1C1C] text-lg leading-6'>
                 Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id scelerisque est ultricies ultricies. Duis est sit sed leo nisl, blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at scelerisque amet nulla purus habitasse.
                 <div className="mb-6" />
@@ -118,7 +118,7 @@ function generateTagColors() {
                 </p>
             </div>
             <div className="bg-[#EAECF0] w-full h-[1px]"></div>
-            <div className="flex justify-between items-center w-full mt-6">
+            <div className="flex md:flex-row flex-col justify-between md:items-center items-left w-full mt-6">
                 <div className="flex">
                     <img src={Avatar} alt="Avatar" />
                     <div className="ml-4">
@@ -126,7 +126,7 @@ function generateTagColors() {
                         <p className="text-[#475467]">Product Designer</p>
                     </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-3 md:mt-0 mt-4">
                     <button className="border border-[#D0D5DD] text-sm bg-white text-[#344054] rounded-lg w-[7.68rem] h-10 flex justify-center items-center">
                         <CopyIcon className='mr-2' />
 
@@ -162,7 +162,7 @@ export function BlogHero() {
             </div>
             <span className="text-[#6941C6] md:text-2xl text-sm mb-3">Published 20 Jan 2024</span>
             <h2 className="text-[#101828] md:text-[3.75rem] text-center text-[2.75rem] leading-[3rem] capitalize">UX review presentations</h2>
-            <p className="text-3xl mb-[2.5rem] text-center mt-6">How do you create compelling presentations that wow your colleagues and impress your managers?</p>
+            <p className="md:text-3xl text-[28px] mb-[2.5rem] text-center mt-6">How do you create compelling presentations that wow your colleagues and impress your managers?</p>
             <div className="flex gap-x-2">
                 <Tag>Design</Tag>
                 <Tag>Research</Tag>
