@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.css';
-import {Container} from "./sections/homepage/components/Container";
+// import {Container} from "./sections/homepage/components/Container";
 import {
-    CallToActionSection,
-    Clients, DreamTeam,
-    HomepageHero,
-    OurServices,
-    Partnership, ReviewsSection, SignupForms,
-    Steps, TalkToUs,
-    WhatWeDo
+    // BlogPostCarousel,
+    // CallToActionSection,
+    // Clients, DreamTeam,
+    // HomepageHero,
+    // OurServices,
+    // Partnership, ReviewsSection, SignupForms,
+    // Steps, TalkToUs,
+    // WhatWeDo
 } from "./sections/homepage/Hero";
-import Accordion from "./components/service-page/faq";
-import Navbar from './components/header';
-import Footer from './components/footer';
+// import Accordion from "./components/service-page/faq";
+// import Navbar from './components/header';
+// import Footer from './components/footer';
 
 
 const items = [
@@ -28,26 +29,28 @@ const items = [
 function App() {
   return (
     <>
-    <Navbar />
-        <HomepageHero
-            imageSrc="/homepage-hero-image.png"
-            tagText="OUR EXPERIENCES BOOST YOUR BUSINESS"
-            heroHeading="Data-Driven Marketing Solutions"
-            homepageParagraph=
-                "We envision serving as an all-in-one partner across content, data, and digital media in an ever-evolving combination of digital expertise."
-        />
-        <Clients/>
-        <WhatWeDo />
-        <CallToActionSection />
-        <OurServices />
-        <Partnership/>
-        <Steps />
-        <SignupForms />
-        <TalkToUs />
-        <Accordion title='Frequently asked questions' items={items} />
-        <ReviewsSection />
-        <DreamTeam />
-        <Footer />
+        {/*<BlogPostCarousel />*/}
+    {/*<Navbar />*/}
+
+        {/*<HomepageHero*/}
+        {/*    imageSrc="/homepage-hero-image.png"*/}
+        {/*    tagText="OUR EXPERIENCES BOOST YOUR BUSINESS"*/}
+        {/*    heroHeading="Data-Driven Marketing Solutions"*/}
+        {/*    homepageParagraph=*/}
+        {/*        "We envision serving as an all-in-one partner across content, data, and digital media in an ever-evolving combination of digital expertise."*/}
+        {/*/>*/}
+        {/*<Clients/>*/}
+        {/*<WhatWeDo />*/}
+        {/*<CallToActionSection />*/}
+        {/*<OurServices />*/}
+        {/*<Partnership/>*/}
+        {/*<Steps />*/}
+        {/*<SignupForms />*/}
+        {/*<TalkToUs />*/}
+        {/*<Accordion title='Frequently asked questions' items={items} />*/}
+        {/*<ReviewsSection />*/}
+        {/*<DreamTeam />*/}
+        {/*<Footer />*/}
     </>
 
   );

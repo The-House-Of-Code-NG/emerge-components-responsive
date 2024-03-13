@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Service from "./pages/service";
-import NewComponent from "./pages/new component/NewComponent";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/styles/homepage/index.css";
 // import './assets/styles/font.css'
+import NewComponent from "./pages/component";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Service />,
   },
   {
-    path: "/new-component",
+    path: "/component",
     element: <NewComponent />,
   },
 ]);
