@@ -32,7 +32,7 @@ const Satifactory: React.FC<SatifactoryProps> = ({ title, tag, paragraph }) => {
 type BuildingProps = {
   title: string;
   content: { image: string; text: string }[];
-}
+};
 
 const Building: React.FC<BuildingProps> = ({ title, content }) => {
   return (
@@ -65,47 +65,47 @@ type BookDemoProps = {
     title: string;
     paragraph: string;
     buttonLabel: string;
-  }
+  };
   media: {
     isImage: boolean;
     url?: string;
+  };
+};
 
-  }
-  
-}
-
-function BookDemo({
-  content, media
-}: BookDemoProps) {
+function BookDemo({ content, media }: BookDemoProps) {
   return (
-   <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2">
-                <div className={`w-full bg-${isImage ? "white bg-opacity-10 text-white" : "[#4A00FF0F]"} text-[#100650] flex justify-center items-center lg:text-lg text-[0.87rem] text-left rounded-[6px] px-2.5`}>
-                    {content.tag}
-                </div>
-                <h2 className="text-2xl font-bold my-4">{paragraph.title}</h2>
-                <p className="text-lg">{content.paragraph}</p>
-                <div className="mt-4">
-                    <button className={`all-[unset] box-border flex  w-full lg:w-[183.58px] h-[52px]"  bg-[#8959ff] rounded-[8px] overflow-hidden`} onClick={onClick}>
-                        <div className="relative w-fit font-semibold text-white text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
-                            {buttonLabel}
-                        </div>
-                    </button>
-                </div>
+    <div className="flex flex-col lg:flex-row items-center">
+      <div className="lg:w-1/2">
+        <div
+          className={`w-full bg-white text-[#100650] flex justify-center items-center lg:text-lg text-[0.87rem] text-left rounded-[6px] px-2.5`}
+        >
+          {content.tag}
+        </div>
+        <h2 className="text-2xl font-bold my-4">{content.title}</h2>
+        <p className="text-lg">{content.paragraph}</p>
+        <div className="mt-4">
+          <button
+            className={`all-[unset] box-border flex  w-full lg:w-[183.58px] h-[52px]"  bg-[#8959ff] rounded-[8px] overflow-hidden`}
+          >
+            <div className="relative w-fit font-semibold text-white text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
+              {content.buttonLabel}
             </div>
-            <div className="lg:w-1/2 lg:ml-4">
-                {isImage ? (
-                    <img src={mediaUrl} alt="Image" className="w-full" />
-                ) : (
-                    <video controls className="w-full">
-                        <source src={mediaUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                )}
-            </div>
-        </div>)
+          </button>
+        </div>
+      </div>
+      <div className="lg:w-1/2 lg:ml-4">
+        {media.isImage ? (
+          <img src={media.url} alt="Image" className="w-full" />
+        ) : (
+          <video controls className="w-full">
+            <source src={media.url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+      </div>
+    </div>
+  );
 }
-
 
 const NewComponent = () => {
   return (
