@@ -59,7 +59,7 @@ const Building: React.FC<BuildingProps> = ({ title, content }) => {
   );
 };
 
-type BookDemoProps {
+type BookDemoProps = {
   content: {
     tag: string;
     title: string;
@@ -81,12 +81,12 @@ function BookDemo({
    <div className="flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2">
                 <div className={`w-full bg-${isImage ? "white bg-opacity-10 text-white" : "[#4A00FF0F]"} text-[#100650] flex justify-center items-center lg:text-lg text-[0.87rem] text-left rounded-[6px] px-2.5`}>
-                    {tag}
+                    {content.tag}
                 </div>
-                <h2 className="text-2xl font-bold my-4">{title}</h2>
-                <p className="text-lg">{paragraph}</p>
+                <h2 className="text-2xl font-bold my-4">{paragraph.title}</h2>
+                <p className="text-lg">{content.paragraph}</p>
                 <div className="mt-4">
-                    <button className={`all-[unset] box-border flex ${buttonSize === "sm" ? "w-full lg:w-[183.58px] h-[52px]" : 'w-full lg:w-[304px] h-[54px]'} items-center justify-center pt-[6px] pb-[8px] px-[14px] bg-[#8959ff] rounded-[8px] overflow-hidden`} onClick={onClick}>
+                    <button className={`all-[unset] box-border flex  w-full lg:w-[183.58px] h-[52px]"  bg-[#8959ff] rounded-[8px] overflow-hidden`} onClick={onClick}>
                         <div className="relative w-fit font-semibold text-white text-[18px] tracking-[0] leading-[24px] whitespace-nowrap">
                             {buttonLabel}
                         </div>
