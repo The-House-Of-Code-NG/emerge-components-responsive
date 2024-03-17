@@ -1,17 +1,21 @@
 import Pc from "../assets/newComp/pc.svg";
-import MockupHand from "../assets/newComp/logo mockup.png";
 import Dollar from "../assets/newComp/dollar.svg";
 import DonateImage from "../assets/newComp/donate.svg";
+import MockupHand from "../assets/newComp/logo mockup.png";
 
-type SatifactoryProps = {
-  title: string;
+type SatisfactoryProps = {
   tag: string;
+  title: string;
   paragraph: string;
 };
 
-const Satifactory: React.FC<SatifactoryProps> = ({ title, tag, paragraph }) => {
+const Satisfactory: React.FC<SatisfactoryProps> = ({
+  tag,
+  title,
+  paragraph,
+}) => {
   return (
-    <section className=" bg-[#100650] w-full overflow-hidden">
+    <section className="bg-[#100650] w-full overflow-hidden">
       <div className="flex justify-between max-w-[100rem] mx-auto flex-col md:flex-row px-8 py-[3.5rem] md:p-16 bg-[url('../public/art.svg')] bg-origin-border bg-no-repeat bg-right-bottom md:bg-right-top">
         <div className="w-full md:w-2/3">
           <span className="text-sm md:text-base text-center font-Inter text-white font-medium uppercase h-[2.25rem] bg-white/10 px-2.5 rounded-[.375rem] py-2 truncate">
@@ -20,7 +24,7 @@ const Satifactory: React.FC<SatifactoryProps> = ({ title, tag, paragraph }) => {
           <h3 className="capitalise leading-[62.4px] mt-[19.04px] font-black font-Satoshi text-[51.2px] md:text-[56px] text-white">
             {title}
           </h3>
-          <p className=" space-y-6 mt-7 mb-11 font-Inter text-white leading-[2rem] md:text-lg font-normal">
+          <p className="space-y-6 mt-7 mb-11 font-Inter text-white leading-[2rem] md:text-lg font-normal">
             {paragraph}
           </p>
         </div>
@@ -57,7 +61,7 @@ const Building: React.FC<BuildingProps> = ({ title, content }) => {
         <img
           src={MockupHand}
           alt="Emerge Mockup"
-          className="mx-auto hidden lg:block  scale-90 lg:absolute lg:right-36 lg:bottom-[-90px] lg:scale-125"
+          className="mx-auto hidden lg:block scale-90 lg:absolute lg:right-36 lg:bottom-[-90px] lg:scale-125"
         />
       </div>
     </section>
@@ -66,7 +70,7 @@ const Building: React.FC<BuildingProps> = ({ title, content }) => {
 
 type BookDemoProps = {
   content: {
-    tag?: string;
+    tag: string;
     title: string;
     paragraph: string;
   };
@@ -74,72 +78,53 @@ type BookDemoProps = {
     url: string;
     alt?: string;
   };
-  isImage?: boolean;
+  isImage: boolean;
 };
 
-function BookDemo({ content, media, isImage = true }: BookDemoProps) {
+const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
   return (
     <section className="bg-white max-w-[100rem] mx-auto text-[#100650] w-full overflow-hidden">
-      <div className="flex px-8 py-[3.5rem] md:p-16 md:bg-[url(./assets/vector-mobile.svg)]  lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom overflow-hidden">
+      <div className="flex px-8 py-[3.5rem] md:p-16 md:bg-[url(./assets/vector-mobile.svg)] lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom overflow-hidden">
         <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-center md:gap-8 md:justify-between">
-          <div className="flex flex-col items-start gap-4 w-full ">
-            <span className=" text-sm md:text-base text-center font-Inter font-medium uppercase h-[2.25rem] bg-[#c9c1f3] px-2.5 rounded-[.375rem] py-2">
+          <div className="flex flex-col items-start gap-4 w-full">
+            <span className="text-sm md:text-base text-center font-Inter font-medium uppercase h-[2.25rem] bg-[#c9c1f3] px-2.5 rounded-[.375rem] py-2">
               {content.tag}
             </span>
             <div className="flex flex-col items-start gap-9">
               <h3 className="capitalise leading-[62.4px] font-black font-Satoshi text-[51.2px] md:text-[56px]">
                 {content.title}
               </h3>
-              <p className="font-Inter   leading-[25.6px] md:text-lg font-normal">
+              <p className="font-Inter leading-[25.6px] md:text-lg font-normal">
                 {content.paragraph}
               </p>
-
               <button className="bg-[#8959ff] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
                 Book a Demo
               </button>
             </div>
           </div>
-          <div className="w-full bg-[#D1D0D7] rounded-2xl shadow-md ">
+          <div className="lg:w-full  bg-[#D1D0D7] rounded-2xl shadow-md flex justify-center items-center">
             {isImage ? (
-              <img
-                width={545}
-                height={365}
-                src={media.url}
-                alt={media.alt}
-              ></img>
+              <img src={media.url} alt={media.alt} />
             ) : (
-              <video>
-                <source src={media.url} />
+              <video controls>
+                <source src={media.url} type="video/mp4" />
               </video>
             )}
-            <iframe
-              width="545"
-              height="365"
-              src="https://www.youtube.com/embed/dSufVTSCeVw"
-              title="Builder Studio"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="hidden w-full object-fill bg-[#D1D0D7] rounded-2xl shadow-md "
-            ></iframe>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
-const NewComponent = () => {
+const NewComponent: React.FC = () => {
   return (
     <>
-      <Satifactory
-        tag={"satisfactory services"}
-        title={"Why is Emerge Digital the Leading App Development Company?"}
-        paragraph={
-          " Over the course of nearly a decade, we have assisted numerous startup clients in raising capital for their businesses. We provide various engagement models to meet the specific needs of our clients. We can meet all of your requirements, whether you require a fixed budget model, a time and material model, or a fully dedicated development team. As the best app development company in Dubai, we keep our communication channels open so that our clients can contact us whenever they need to. We make certain that they are connected with the appropriate team of experts and that they receive the appropriate solutions on time"
-        }
+      <Satisfactory
+        tag="Satisfactory Services"
+        title="Why is Emerge Digital the Leading App Development Company?"
+        paragraph="Over the course of nearly a decade, we have assisted numerous startup clients in raising capital for their businesses. We provide various engagement models to meet the specific needs of our clients. We can meet all of your requirements, whether you require a fixed budget model, a time and material model, or a fully dedicated development team. As the best app development company in Dubai, we keep our communication channels open so that our clients can contact us whenever they need to. We make certain that they are connected with the appropriate team of experts and that they receive the appropriate solutions on time."
       />
-
       <Building
         title="Even if you don't know how to code, you can build your app idea."
         content={[
@@ -157,12 +142,11 @@ const NewComponent = () => {
           },
         ]}
       />
-
       <BookDemo
         content={{
-          tag: "building",
+          tag: "Building",
           title:
-            "Indutries transformed with the best mobile app development services",
+            "Industries transformed with the best mobile app development services",
           paragraph:
             "We are a top-rated app development company in Dubai, UAE, with a reputation for developing highly engaging mobile apps for a variety of business needs.",
         }}
@@ -170,7 +154,7 @@ const NewComponent = () => {
           url: "https://source.unsplash.com/random",
           alt: "Builder Studio",
         }}
-        isImage={false}
+        isImage={false} // Change to false to display video
       />
     </>
   );
