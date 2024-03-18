@@ -43,16 +43,16 @@ const Building: React.FC<BuildingProps> = ({ title, content }) => {
     <section className="mx-auto bg-[#100650] w-full overflow-hidden">
       <div className="flex flex-col max-w-[100rem] mx-auto lg:flex-row px-8 py-[3.5rem] md:p-16 bg-[url(./assets/vector-mobile.svg)] lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom relative">
         <div className="w-full md:w-2/3 ">
-          <h3 className="capitalise leading-[62.4px] font-black font-Satoshi text-[51.2px] md:text-[56px] text-white">
+          <h3 className="capitalise leading-[3.9rem] font-black font-Satoshi text-[3.2rem] md:text-[3.5rem] text-white">
             {title}
           </h3>
           <div className="flex flex-col gap-8 justify-center mt-14">
             {content.map((item, index) => (
               <div
                 key={index}
-                className="flex gap-4 items-center font-Inter text-white leading-[25.6px] text-lg font-normal "
+                className="flex gap-4 items-center font-Inter text-white leading-[1.6rem] text-lg font-normal "
               >
-                <img src={item.image} alt="" className="size-[38px]" />
+                <img src={item.image} alt="" className="size-[2.375rem]" />
                 <p>{item.text}</p>
               </div>
             ))}
@@ -61,7 +61,7 @@ const Building: React.FC<BuildingProps> = ({ title, content }) => {
         <img
           src={MockupHand}
           alt="Emerge Mockup"
-          className="mx-auto hidden lg:block scale-90 lg:absolute lg:right-36 lg:bottom-[-90px] lg:scale-125"
+          className="mx-auto hidden lg:block scale-90 lg:absolute lg:right-36 lg:bottom-[-5.625rem] lg:scale-125"
         />
       </div>
     </section>
@@ -91,10 +91,10 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
               {content.tag}
             </span>
             <div className="flex flex-col items-start gap-9">
-              <h3 className="capitalise leading-[62.4px] font-black font-Satoshi text-[51.2px] md:text-[56px]">
+              <h3 className="capitalise leading-[3.9rem] font-black font-Satoshi text-[3.2rem] md:text-[3.5rem]">
                 {content.title}
               </h3>
-              <p className="font-Inter leading-[25.6px] md:text-lg font-normal">
+              <p className="font-Inter leading-[1.6rem] md:text-lg font-normal">
                 {content.paragraph}
               </p>
               <button className="bg-[#8959ff] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
@@ -102,14 +102,16 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
               </button>
             </div>
           </div>
-          <div className="lg:w-full  bg-[#D1D0D7] rounded-2xl shadow-md flex justify-center items-center">
-            {isImage ? (
-              <img src={media.url} alt={media.alt} />
-            ) : (
-              <video controls>
-                <source src={media.url} type="video/mp4" />
-              </video>
-            )}
+          <div className="w-full">
+            <div className="mx-auto rounded-2xl shadow-md bg-[#D1D0D7]">
+              {isImage ? (
+                <img src={media.url} alt={media.alt} />
+              ) : (
+                <video controls>
+                  <source src={media.url} type="video/mp4" />
+                </video>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -125,6 +127,22 @@ const NewComponent: React.FC = () => {
         title="Why is Emerge Digital the Leading App Development Company?"
         paragraph="Over the course of nearly a decade, we have assisted numerous startup clients in raising capital for their businesses. We provide various engagement models to meet the specific needs of our clients. We can meet all of your requirements, whether you require a fixed budget model, a time and material model, or a fully dedicated development team. As the best app development company in Dubai, we keep our communication channels open so that our clients can contact us whenever they need to. We make certain that they are connected with the appropriate team of experts and that they receive the appropriate solutions on time."
       />
+
+      <BookDemo
+        content={{
+          tag: "Building",
+          title:
+            "Industries transformed with the best mobile app development services",
+          paragraph:
+            "We are a top-rated app development company in Dubai, UAE, with a reputation for developing highly engaging mobile apps for a variety of business needs.",
+        }}
+        media={{
+          url: "https://source.unsplash.com/random",
+          alt: "Builder Studio",
+        }}
+        isImage={false} // Change to false to display video
+      />
+
       <Building
         title="Even if you don't know how to code, you can build your app idea."
         content={[
@@ -141,20 +159,6 @@ const NewComponent: React.FC = () => {
             text: "Aftercare - keeps your software up to date with no fuss",
           },
         ]}
-      />
-      <BookDemo
-        content={{
-          tag: "Building",
-          title:
-            "Industries transformed with the best mobile app development services",
-          paragraph:
-            "We are a top-rated app development company in Dubai, UAE, with a reputation for developing highly engaging mobile apps for a variety of business needs.",
-        }}
-        media={{
-          url: "https://source.unsplash.com/random",
-          alt: "Builder Studio",
-        }}
-        isImage={false} // Change to false to display video
       />
     </>
   );
