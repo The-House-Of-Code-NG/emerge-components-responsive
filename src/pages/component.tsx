@@ -87,7 +87,7 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
       <div className="flex px-8 py-[3.5rem] md:p-16 md:px-20 md:bg-[url(./assets/vector-mobile.svg)] lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom overflow-hidden">
         <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-center md:gap-8 md:justify-between">
           <div className="flex flex-col items-start gap-4 w-full">
-            <span className="text-sm md:text-base text-center font-Inter font-medium uppercase h-[2.25rem] bg-[#c9c1f3] px-2.5 rounded-[.375rem] py-2">
+            <span className="text-sm md:text-base text-center font-Inter font-medium uppercase h-[2.25rem] bg-[#F4F0FF] px-2.5 rounded-[.375rem] py-2">
               {content.tag}
             </span>
             <div className="flex flex-col items-start gap-9">
@@ -97,7 +97,7 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
               <p className="font-Inter leading-[1.6rem] md:text-lg font-normal">
                 {content.paragraph}
               </p>
-              <button className="bg-[#F4F0FF] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
+              <button className="bg-[#8959FF] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
                 Book a Demo
               </button>
             </div>
