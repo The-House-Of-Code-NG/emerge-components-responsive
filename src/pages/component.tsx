@@ -97,18 +97,18 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
               <p className="font-Inter leading-[1.6rem] md:text-lg font-normal">
                 {content.paragraph}
               </p>
-              <button className="bg-[#8959ff] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
+              <button className="bg-[#F4F0FF] text-white px-[1.875rem] py-3 rounded-lg font-semibold text-lg">
                 Book a Demo
               </button>
             </div>
           </div>
           <div className="w-full flex items-center justify-center">
-            <div className="mx-auto object-cover">
+            <div className="mx-auto ">
               {isImage ? (
                 <img
                   src={media.url}
                   alt={media.alt}
-                  className=" w-[34.0625rem] h-[22.8125rem] rounded-lg shadow-md "
+                  className="object-cover w-[34.0625rem] h-[22.8125rem] rounded-lg shadow-md "
                 />
               ) : (
                 <video controls width={545} height={365} className="rounded-lg">
@@ -144,7 +144,7 @@ const NewComponent: React.FC = () => {
           url: "https://source.unsplash.com/random",
           alt: "Builder Studio",
         }}
-        isImage={false}
+        isImage={true}
       />
 
       <Building
