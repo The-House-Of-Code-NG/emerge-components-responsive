@@ -84,7 +84,7 @@ type BookDemoProps = {
 const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
   return (
     <section className="bg-white max-w-[100rem] mx-auto text-[#100650] w-full overflow-hidden">
-      <div className="flex px-8 py-[3.5rem] md:p-16 md:bg-[url(./assets/vector-mobile.svg)] lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom overflow-hidden">
+      <div className="flex px-8 py-[3.5rem] md:p-16 md:px-20 md:bg-[url(./assets/vector-mobile.svg)] lg:bg-[url('./assets/vector-ppc.svg')] bg-origin-border bg-no-repeat bg-right-top lg:bg-right-bottom overflow-hidden">
         <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-center md:gap-8 md:justify-between">
           <div className="flex flex-col items-start gap-4 w-full">
             <span className="text-sm md:text-base text-center font-Inter font-medium uppercase h-[2.25rem] bg-[#c9c1f3] px-2.5 rounded-[.375rem] py-2">
@@ -111,7 +111,7 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
                   className=" w-[34.0625rem] h-[22.8125rem] rounded-lg shadow-md "
                 />
               ) : (
-                <video controls width={546} height={450} className="rounded-lg">
+                <video controls width={545} height={365} className="rounded-lg">
                   <source src={media.url} type="video/mp4" />
                 </video>
               )}
@@ -144,7 +144,7 @@ const NewComponent: React.FC = () => {
           url: "https://source.unsplash.com/random",
           alt: "Builder Studio",
         }}
-        isImage={true}
+        isImage={false}
       />
 
       <Building
