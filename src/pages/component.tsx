@@ -18,10 +18,10 @@ const Satisfactory: React.FC<SatisfactoryProps> = ({
     <section className="bg-[#100650] w-full overflow-hidden">
       <div className="flex justify-between max-w-[100rem] mx-auto flex-col md:flex-row px-8 py-[3.5rem] md:p-16 bg-[url('../public/art.svg')] bg-origin-border bg-no-repeat bg-right-bottom md:bg-right-top">
         <div className="w-full md:w-2/3">
-          <span className="text-sm md:text-base text-center font-Inter text-white font-medium uppercase h-[2.25rem] bg-white/10 px-2.5 rounded-[.375rem] py-2 truncate">
+          <span className="text-sm md:text-base text-center font-Inter text-white font-medium uppercase h-[2.25rem] bg-white/10 px-2.5 rounded-[0.375rem] py-2 truncate">
             {tag}
           </span>
-          <h3 className="capitalise leading-[62.4px] mt-[19.04px] font-black font-Satoshi text-[51.2px] md:text-[56px] text-white">
+          <h3 className="capitalise leading-[62.4px] mt-[19.04px] font-black font-Satoshi text-[51.2px] md:text-[3.5rem] text-white">
             {title}
           </h3>
           <p className="space-y-6 mt-7 mb-11 font-Inter text-white leading-[2rem] md:text-lg font-normal">
@@ -102,12 +102,16 @@ const BookDemo: React.FC<BookDemoProps> = ({ content, media, isImage }) => {
               </button>
             </div>
           </div>
-          <div className="w-full">
-            <div className="mx-auto rounded-2xl shadow-md bg-[#D1D0D7]">
+          <div className="w-full flex items-center justify-center">
+            <div className="mx-auto object-cover">
               {isImage ? (
-                <img src={media.url} alt={media.alt} />
+                <img
+                  src={media.url}
+                  alt={media.alt}
+                  className=" w-[34.0625rem] h-[22.8125rem] rounded-lg shadow-md "
+                />
               ) : (
-                <video controls>
+                <video controls width={546} height={450} className="rounded-lg">
                   <source src={media.url} type="video/mp4" />
                 </video>
               )}
@@ -140,7 +144,7 @@ const NewComponent: React.FC = () => {
           url: "https://source.unsplash.com/random",
           alt: "Builder Studio",
         }}
-        isImage={false} // Change to false to display video
+        isImage={true}
       />
 
       <Building
